@@ -35,7 +35,7 @@ Prerequisites
 Installation:-
 
 Clone the Repository
-git clone https://github.com/Gopi-varaprasad7/aptiverve_mobile.git
+git clone https://github.com/Gopi-varaprasad7/apti_mobile.git
 
 Backend setup:-
 
