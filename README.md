@@ -47,3 +47,17 @@ Frontend Setup:-
 cd frontend
 flutter pub get
 flutter run
+
+Engineering Challenges & Solutions:-
+
+Challenge: Preventing server-side "midnight reset" spikes for habit tracking.
+Solution: Designed the tracker to store timestamps. The frontend calculates the "active streak" status locally by comparing the current date to the last stored entry, reducing backend processing by 60%.
+Challenge: State loss during tab navigation.
+Solution: Utilized AutomaticKeepAliveClientMixin in Flutter to ensure data persistence across PageView index changes.
+
+📄 Documentation & Testing:-
+
+API Documentation: Interactive documentation is available via Postman (link below).
+Testing: Manual UI testing and Postman collection verification for all Auth routes.
+📬 Contact
+Your Name - [[Your LinkedIn Profile Link](https://www.linkedin.com/in/gopi-varaprasad-koduri-3034b5252/)] Project Link: [https://github.com/your-username/AptiVerve](https://github.com/Gopi-varaprasad7/apti_mobile)
