@@ -1,4 +1,5 @@
 import 'package:app/screens/register_screen.dart';
+import 'package:app/services/api_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,12 +21,30 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         isLoading = true;
       });
-      final email = emailController.text.trim();
-      final password = passwordController.text.trim();
 
-      await Future.delayed(const Duration(seconds: 2));
-      debugPrint("email: $email");
-      debugPrint("password : $password");
+      try {
+        final response = await ApiService.login(
+          emailController.text.trim(),
+          passwordController.text.trim(),
+        );
+        if (response['success'] == true) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("Login Successful")));
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreem()),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Login failed')));
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 

@@ -1,3 +1,4 @@
+import 'package:app/services/api_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -20,14 +21,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
       setState(() {
         isLoading = true;
       });
-      final name = nameController.text.trim();
-      final email = emailController.text.trim();
-      final password = passwordController.text.trim();
 
-      await Future.delayed(const Duration(seconds: 2));
-      debugPrint("Name: $name");
-      debugPrint("Email: $email");
-      debugPrint("Password: $password");
+      try {
+        final results = await ApiService.register(
+          nameController.text.trim(),
+          emailController.text.trim(),
+          passwordController.text.trim(),
+        );
+        if (results['success'] = true) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Registration Successful")),
+          );
+          Navigator.pop(context);
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("Registration failed")));
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Something went wrong")));
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
+      }
     }
   }
 
@@ -36,6 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    confirmPassController.dispose();
     super.dispose();
   }
 
