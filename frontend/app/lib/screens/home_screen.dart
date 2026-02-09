@@ -15,10 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
+            SizedBox(height: 24),
             Text('Welcome to AptiVerve', style: TextStyle(fontSize: 40)),
+            SizedBox(height: 48),
             Center(
               child: Column(
                 children: [
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
-                    height: 20,
+                    height: 60,
                     child: ElevatedButton(
                       onPressed:
                           isLoading
