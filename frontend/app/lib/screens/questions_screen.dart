@@ -1,4 +1,6 @@
 import 'package:app/screens/home_screen.dart';
+import 'package:app/screens/profile_screen.dart';
+import 'package:app/screens/settings_screen.dart';
 import 'package:app/widgets/question_card.dart';
 import 'package:flutter/material.dart';
 
@@ -74,10 +76,48 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                     ),
                   ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.person),
-                  color: Colors.grey,
+                PopupMenuButton<String>(
+                  icon: Icon(Icons.person, color: Colors.grey),
+                  onSelected: (value) {
+                    if (value == 'profile') {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfileScreen(),
+                        ),
+                      );
+                    } else if (value == 'settings') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SettingsScreen(),
+                        ),
+                      );
+                    }
+                  },
+                  itemBuilder:
+                      (context) => [
+                        const PopupMenuItem(
+                          value: 'profile',
+                          child: Row(
+                            children: [
+                              Icon(Icons.percent_outlined, size: 20),
+                              SizedBox(width: 8),
+                              Text('Profile'),
+                            ],
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'settings',
+                          child: Row(
+                            children: [
+                              Icon(Icons.settings_outlined, size: 20),
+                              SizedBox(width: 8),
+                              Text('Settings'),
+                            ],
+                          ),
+                        ),
+                      ],
                 ),
               ],
             ),
