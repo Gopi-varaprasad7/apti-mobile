@@ -1,6 +1,7 @@
 import 'package:app/screens/questions_screen.dart';
 import 'package:app/screens/settings_screen.dart';
 import 'package:app/widgets/profile_card.dart';
+import 'package:app/widgets/statss_overview.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -104,6 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               },
             )),
+            StatsOverview(attempted: 2, correct: 1, wrong: 1),
           ],
         ),
       ),
