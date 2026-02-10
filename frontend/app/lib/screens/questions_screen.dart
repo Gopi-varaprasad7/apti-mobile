@@ -1,4 +1,5 @@
 import 'package:app/screens/home_screen.dart';
+import 'package:app/widgets/question_card.dart';
 import 'package:flutter/material.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -173,6 +174,7 @@ class _QuestionScreenState extends State<QuestionsScreen> {
                 ),
               ],
             ),
+            QuestionCard(category: selectedCategory, difficulty: selectedLevel),
           ],
         ),
       ),
