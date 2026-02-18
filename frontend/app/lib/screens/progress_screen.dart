@@ -18,8 +18,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
   final List<Widget> pages = [
     const HabitScreen(),
     const StatsScreen(),
-    const TableScreen(),
-    const DateScreen(),
+    const TableScreen(habits: []),
+    const DateScreen(habits: []),
   ];
   @override
   Widget build(BuildContext context) {

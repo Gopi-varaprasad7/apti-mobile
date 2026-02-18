@@ -19,4 +19,8 @@ class Habit {
     required this.color,
     this.subTopics = const [],
   });
+
+  get endDate => null;
+
+  DateTime? get startDate => null;
 }
