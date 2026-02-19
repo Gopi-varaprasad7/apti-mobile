@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-class SubTopic {
-  String title;
-  bool isCompleted;
-
-  SubTopic({required this.title, this.isCompleted = false});
-}
 
 class Habit {
   final String name;
@@ -18,9 +12,18 @@ class Habit {
     required this.period,
     required this.color,
     this.subTopics = const [],
-  });
+  })
 
-  get endDate => null;
+}
 
-  DateTime? get startDate => null;
+class SubTopic {
+  final String id;
+  final String title;
+  bool isCompleted;
+
+  SubTopic({
+    required this.title,
+    this.isCompleted = false,
+    String? id,
+  }) : id = id ?? DateTime.now().millisecondsSinceEpoch.toString();
 }
