@@ -14,7 +14,9 @@ class Habit {
     this.subTopics = const [],
   })
 
-}
+
+
+  DateTime get startDate => null;}
 
 class SubTopic {
   final String id;
