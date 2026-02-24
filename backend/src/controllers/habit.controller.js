@@ -15,3 +15,15 @@ exports.createHabit = async (req,res) => {
           });
     })
 }
+
+exports.getHabitsByUser = (req, res) => {
+    const userId = req.params.userId;
+  
+    const sql = "SELECT * FROM Habit WHERE userId = ?";
+  
+    db.query(sql, [userId], (err, results) => {
+      if (err) return res.status(500).json(err);
+  
+      res.json(results);
+    });
+  };
