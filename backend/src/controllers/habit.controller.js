@@ -27,3 +27,14 @@ exports.getHabitsByUser = (req, res) => {
       res.json(results);
     });
   };
+
+exports.updateHabit = (req,res) => {
+  const {habitId} = req.body;
+
+  const query = 'SELECT habitId FROM Habit WHERE habitId = ?'
+  db.query(query,[habitId],(err,result) => {
+    if (err) return res.status(500).json(err);
+  
+      res.json(result);
+  })
+}
