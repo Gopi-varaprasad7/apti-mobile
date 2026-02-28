@@ -38,3 +38,30 @@ exports.updateHabit = (req,res) => {
       res.json(result);
   })
 }
+
+exports.deleteHabit = (req, res) => {
+  const { habitId } = req.body;
+
+  // 1. Validation: Ensure an ID was actually sent
+  if (!habitId) {
+    return res.status(400).json({ message: "Habit ID is required" });
+  }
+
+  // 2. The SQL Query: Using 'DELETE' with a placeholder (?) for security
+  const query = 'DELETE FROM habits WHERE id = ?';
+
+  // 3. Execute the query
+  db.query(query, [habitId], (err, result) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json({ error: "Internal server error" });
+    }
+
+    // 4. Check if a row was actually deleted
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Habit not found" });
+    }
+
+    return res.status(200).json({ message: "Habit deleted successfully" });
+  });
+};
